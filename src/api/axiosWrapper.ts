@@ -5,11 +5,13 @@ const customAxios = axios.create({
   baseURL: process.env.REACT_APP_APIBASEURL,
 });
 
+
 function setupAxiosInterceptors(axios: AxiosInstance) {
   axios.interceptors.request.use(
     (config: AxiosRequestConfig) => {
-      if (!config?.headers?.Authorization && config?.headers) {
-        config.headers.Authorization = Cookies.get("token");
+      const token = Cookies.get("token");
+      if (!config?.headers?.Authorization && config?.headers && token ) {
+        config.headers.Authorization = token;
       }
 
       return config;
