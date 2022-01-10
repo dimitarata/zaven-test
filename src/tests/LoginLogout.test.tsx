@@ -14,15 +14,15 @@ describe("Login/Logout Tests", () => {
     );
 
     const button = getByTestId("button");
-	
+
     const username = getByTestId("username");
-    
-	const password = getByTestId("password");
-	
+
+    const password = getByTestId("password");
+
     expect(password).toBeInTheDocument();
     expect(username).toBeInTheDocument();
     expect(button).toBeInTheDocument();
-	
+
     fireEvent.change(username, { target: { value: "admin" } });
     fireEvent.change(password, { target: { value: "password" } });
     userEvent.click(button);
@@ -41,20 +41,20 @@ describe("Login/Logout Tests", () => {
       <LoginForm handleLogin={mockFn} errorMessage="" />
     );
 
-	const button = getByTestId("button");
-	
+    const button = getByTestId("button");
+
     const username = getByTestId("username");
-	
+
     const password = getByTestId("password");
-	
+
     expect(username).toBeInTheDocument();
     expect(password).toBeInTheDocument();
     expect(button).toBeInTheDocument();
-	
+
     fireEvent.change(password, { target: { value: "password" } });
     fireEvent.change(username, { target: { value: "admin" } });
-	userEvent.click(button);
-	
+    userEvent.click(button);
+
     await waitFor(() => {
       expect(mockFn).toHaveBeenCalledWith({
         username: "admin",
@@ -77,6 +77,5 @@ describe("Login/Logout Tests", () => {
     const logoutButton = dashboard.getByTestId("logout-button");
     expect(logoutButton).toBeInTheDocument();
     fireEvent.click(logoutButton);
-
   });
 });

@@ -1,13 +1,13 @@
-import { createContext } from 'react';
+import { createContext } from "react";
 
 export interface IUserContext {
-	firstName: string;
-	lastName: string;
+  firstName: string;
+  lastName: string;
 }
 
 const defaultState = {
-	firstName: '',
-	lastName: '',
+  firstName: "",
+  lastName: "",
 };
 
 export const UserContext = createContext<IUserContext>(defaultState);

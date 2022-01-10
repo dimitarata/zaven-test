@@ -13,13 +13,13 @@ const Dashboard = () => {
 
   const handleLogout = () => {
     Cookies.remove("token");
-    history.push('/');
+    history.push("/");
   };
 
   useEffect(() => {
     if (!Cookies.get("token")) {
-      history.push("/login")
-    };
+      history.push("/login");
+    }
   }, [history]);
 
   useEffect(() => {
@@ -30,7 +30,8 @@ const Dashboard = () => {
   }, [user]);
 
   function getUserData() {
-    axios.get("/user")
+    axios
+      .get("/user")
       .then((res) => {
         setUser(res.data);
       })
@@ -48,7 +49,7 @@ const Dashboard = () => {
             className="d-flex justify-content-between w-100 "
           >
             <div>
-              <span  className="m-1">{user.firstName}</span>
+              <span className="m-1">{user.firstName}</span>
               <span>{user.lastName}</span>
             </div>
             <div>
